@@ -1,0 +1,16 @@
+
+<div>about</div>
+
+<div>新規コンテンツを追加する</div>
+
+<div>あなたの求めるもの</div>
+
+<div>カテゴリー一覧</div>
+
+<%# <div>検索</div> %>
+
+<% @contents.each do |content| %>
+
+<%= link_to content.content_name, path(content.content_id)  %>
+
+<% end %>
