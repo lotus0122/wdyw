@@ -1,0 +1,18 @@
+<div>戻る</div>
+
+<h1>あなたの求めるものは？</h1>
+
+<div>what do you want?</div>
+
+<div>気分で選ぼう！</div>
+
+<% @content.each do |content| %>
+
+<div class="content_layout">
+<%= attachment_image_tag content, content_image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170'  %>
+<p><%= content_name %></p>
+<p><%= content_text %></p>
+</div>
+<%# IDに紐付いた画像を表示していく(ajax) %>
+
+<% end %>
