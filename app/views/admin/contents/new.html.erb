@@ -1,5 +1,5 @@
 
-<h1>新規コンテンツ追加フォーム</h1>
+<h1>コンテンツ追加フォーム</h1>
 <hr>
 <br>
 <br>
@@ -19,23 +19,37 @@
 <div>メインカテゴリ</div>
 <% f.collection_select :main_category_id, MainCategory.all, :id, :main_category_name %>
 
+<div class="new_button main_button">メインカテゴリを追加する</div>
+
 <div>サブカテゴリ1</div>
 <% f.collection_select :category1_id, Category1.all, :id, :category1_name %>
+
+<div class="new_button sub1_button">サブカテゴリ1を追加する</div>
 
 <div>サブカテゴリ2</div>
 <% f.collection_select :category2_id, Category2.all, :id, :category2_name %>
 
+<div class="new_button sub2_button">サブカテゴリ2を追加する</div>
+
 <div>サブカテゴリ3</div>
 <% f.collection_select :category3_id, Category3.all, :id, :category3_name %>
+
+<div class="new_button sub3_button">サブカテゴリ3を追加する</div>
 
 <div>サブカテゴリ4</div>
 <% f.collection_select :category4_id, Category4.all, :id, :category4_name %>
 
+<div class="new_button sub4_button">サブカテゴリ4を追加する</div>
+
 <div>サブカテゴリ5</div>
 <% f.collection_select :category5_id, Category5.all, :id, :category5_name %>
 
+<div class="new_button sub5_button">サブカテゴリ5を追加する</div>
+
 <div>サブカテゴリ6</div>
-<% f.collection_select :category1_id, Category6.all, :id, :category6_name %>
+<% f.collection_select :category6_id, Category6.all, :id, :category6_name %>
+
+<div class="new_button sub6_button">サブカテゴリ6を追加する</div>
 
 <% end %>
 

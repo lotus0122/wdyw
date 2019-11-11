@@ -1,0 +1,41 @@
+<h1>コンテンツ編集フォーム</h1>
+<hr>
+<br>
+<br>
+<div>
+
+<%= form_for([:admin, @content]) do |f| %>
+
+<div>コンテンツ名</div>
+<%= f.text_field :content_name %>
+
+<div>コンテンツ説明</div>
+<%= f.text_field :content_text %>
+
+<div>コンテンツ画像</div>
+<%= f.attachment_field :content_image %>
+
+<div>メインカテゴリ</div>
+<% f.collection_select :main_category_id, MainCategory.all, :id, :main_category_name %>
+
+<div>サブカテゴリ1</div>
+<% f.collection_select :category1_id, Category1.all, :id, :category1_name %>
+
+<div>サブカテゴリ2</div>
+<% f.collection_select :category2_id, Category2.all, :id, :category2_name %>
+
+<div>サブカテゴリ3</div>
+<% f.collection_select :category3_id, Category3.all, :id, :category3_name %>
+
+<div>サブカテゴリ4</div>
+<% f.collection_select :category4_id, Category4.all, :id, :category4_name %>
+
+<div>サブカテゴリ5</div>
+<% f.collection_select :category5_id, Category5.all, :id, :category5_name %>
+
+<div>サブカテゴリ6</div>
+<% f.collection_select :category1_id, Category6.all, :id, :category6_name %>
+
+<% end %>
+
+</div>

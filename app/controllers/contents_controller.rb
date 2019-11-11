@@ -11,6 +11,7 @@ def index
 end
 
 def show
+    @contents = Content.all
 end
 
 end
