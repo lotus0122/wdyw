@@ -8,6 +8,9 @@ def new
 end
 
 def create
+    content = Content.new(content_params)
+    content.save
+    redirect_to
 end
     
 def update

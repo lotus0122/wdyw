@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_095226) do
+ActiveRecord::Schema.define(version: 2019_11_11_052351) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,66 @@ ActiveRecord::Schema.define(version: 2019_11_10_095226) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "category10s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category10_name"
+  end
+
+  create_table "category1s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category1_name"
+  end
+
+  create_table "category2s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category2_name"
+  end
+
+  create_table "category3s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category3_name"
+  end
+
+  create_table "category4s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category4_name"
+  end
+
+  create_table "category5s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category5_name"
+  end
+
+  create_table "category6s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category6_name"
+  end
+
+  create_table "category7s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category7_name"
+  end
+
+  create_table "category8s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category8_name"
+  end
+
+  create_table "category9s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category9_name"
   end
 
   create_table "contents", force: :cascade do |t|
@@ -41,6 +101,12 @@ ActiveRecord::Schema.define(version: 2019_11_10_095226) do
     t.integer "category8_id"
     t.integer "category9_id"
     t.integer "category10_id"
+  end
+
+  create_table "main_categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "main_category_name"
   end
 
 end

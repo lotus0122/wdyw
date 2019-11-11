@@ -1,6 +1,7 @@
 class ContentsController < ApplicationController
 
 def top
+    @contents = Content.all
 end
 
 def about
