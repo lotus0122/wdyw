@@ -21,35 +21,239 @@
 
 <div class="new_button main_button">メインカテゴリを追加する</div>
 
+    <div class="main_modal_wrapper">
+        <div class="main_modal main_modal_content">
+            <p class="text-right">
+            <span class="fa_wrapper"><%= fa_icon "times" %></span>
+            </p>
+            <h1>メインカテゴリ追加フォーム</h1>
+            <h2>追加済みカテゴリ一覧</h2>
+            <div class="main_wrapper">
+                <% @main_categories.each do |main| %>
+                <span><%= main.main_category_name %>
+                <button type="button" name="削除" value="<%=main.id%>" class="main_delete">削除</button>
+                </span>
+                <% end %>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h2>メインカテゴリ追加</h2>
+            <div>
+                <%= form_for [:admin, @main_category], url: admin_main_categories_path, method: :POST, remote: false do |f| %>
+                <p><%= f.text_field :main_category_name %></p>
+                <p><%= f.submit 'メインカテゴリを追加する', id: "main_submit" %></p>
+                <% end %>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
 <div>サブカテゴリ1</div>
 <% f.collection_select :category1_id, Category1.all, :id, :category1_name %>
 
-<div class="new_button sub1_button">サブカテゴリ1を追加する</div>
+<div class="new_button category1_button">サブカテゴリ1を追加する</div>
+
+    <div class="category1_modal_wrapper">
+        <div class="category1_modal category1_modal_content">
+            <p class="text-right">
+            <span class="fa_wrapper"><%= fa_icon "times" %></span>
+            </p>
+            <h1>サブカテゴリ1追加フォーム</h1>
+            <h2>サブカテゴリ1一覧</h2>
+            <div class="category1_wrapper">
+                <% @category1.each do |category1| %>
+                <span><%= category1.category1_name %>
+                <button type="button" name="削除" value="<%=category1.id%>" class="category1_delete">削除</button>
+                </span>
+                <% end %>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h2>サブカテゴリ1追加</h2>
+            <div>
+                <%= form_for [:admin, @category1], url: admin_category1s_path, method: :POST, remote: false do |f| %>
+                <p><%= f.text_field :category1_name %></p>
+                <p><%= f.submit 'サブカテゴリ1を追加する', id: "category1_submit" %></p>
+                <% end %>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
 
 <div>サブカテゴリ2</div>
 <% f.collection_select :category2_id, Category2.all, :id, :category2_name %>
 
-<div class="new_button sub2_button">サブカテゴリ2を追加する</div>
+<div class="new_button category2_button">サブカテゴリ2を追加する</div>
+
+    <div class="category2_modal_wrapper">
+        <div class="category2_modal category2_modal_content">
+            <p class="text-right">
+            <span class="fa_wrapper"><%= fa_icon "times" %></span>
+            </p>
+            <h1>サブカテゴリ2追加フォーム</h1>
+            <h2>サブカテゴリ2一覧</h2>
+            <div class="category2_wrapper">
+                <% @category2.each do |category2| %>
+                <span><%= category2.category2_name %>
+                <button type="button" name="削除" value="<%=category2.id%>" class="category2_delete">削除</button>
+                </span>
+                <% end %>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h2>サブカテゴリ2追加</h2>
+            <div>
+                <%= form_for [:admin, @category2], url: admin_category2s_path, method: :POST, remote: false do |f| %>
+                <p><%= f.text_field :category2_name %></p>
+                <p><%= f.submit 'サブカテゴリ2を追加する', id: "category2_submit" %></p>
+                <% end %>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
 
 <div>サブカテゴリ3</div>
 <% f.collection_select :category3_id, Category3.all, :id, :category3_name %>
 
-<div class="new_button sub3_button">サブカテゴリ3を追加する</div>
+<div class="new_button category3_button">サブカテゴリ3を追加する</div>
+
+    <div class="category3_modal_wrapper">
+        <div class="category3_modal category3_modal_content">
+            <p class="text-right">
+            <span class="fa_wrapper"><%= fa_icon "times" %></span>
+            </p>
+            <h1>サブカテゴリ3追加フォーム</h1>
+            <h2>サブカテゴリ3一覧</h2>
+            <div class="category3_wrapper">
+                <% @category3.each do |category3| %>
+                <span><%= category3.category3_name %>
+                <button type="button" name="削除" value="<%=category3.id%>" class="category3_delete">削除</button>
+                </span>
+                <% end %>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h2>サブカテゴリ3追加</h2>
+            <div>
+                <%= form_for [:admin, @category3], url: admin_category3s_path, method: :POST, remote: false do |f| %>
+                <p><%= f.text_field :category3_name %></p>
+                <p><%= f.submit 'サブカテゴリ3を追加する', id: "category3_submit" %></p>
+                <% end %>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
+
+
+
 
 <div>サブカテゴリ4</div>
 <% f.collection_select :category4_id, Category4.all, :id, :category4_name %>
 
-<div class="new_button sub4_button">サブカテゴリ4を追加する</div>
+<div class="new_button category4_button">サブカテゴリ4を追加する</div>
+
+    <div class="category4_modal_wrapper">
+        <div class="category4_modal category4_modal_content">
+            <p class="text-right">
+            <span class="fa_wrapper"><%= fa_icon "times" %></span>
+            </p>
+            <h1>サブカテゴリ4追加フォーム</h1>
+            <h2>サブカテゴリ4一覧</h2>
+            <div class="category4_wrapper">
+                <% @category4.each do |category4| %>
+                <span><%= category4.category4_name %>
+                <button type="button" name="削除" value="<%=category4.id%>" class="category4_delete">削除</button>
+                </span>
+                <% end %>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h2>サブカテゴリ4追加</h2>
+            <div>
+                <%= form_for [:admin, @category4], url: admin_category4s_path, method: :POST, remote: false do |f| %>
+                <p><%= f.text_field :category4_name %></p>
+                <p><%= f.submit 'サブカテゴリ4を追加する', id: "category4_submit" %></p>
+                <% end %>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
 
 <div>サブカテゴリ5</div>
 <% f.collection_select :category5_id, Category5.all, :id, :category5_name %>
 
-<div class="new_button sub5_button">サブカテゴリ5を追加する</div>
+<div class="new_button category5_button">サブカテゴリ5を追加する</div>
+
+    <div class="category5_modal_wrapper">
+        <div class="category5_modal category5_modal_content">
+            <p class="text-right">
+            <span class="fa_wrapper"><%= fa_icon "times" %></span>
+            </p>
+            <h1>サブカテゴリ5追加フォーム</h1>
+            <h2>サブカテゴリ5一覧</h2>
+            <div class="category5_wrapper">
+                <% @category5.each do |category5| %>
+                <span><%= category5.category5_name %>
+                <button type="button" name="削除" value="<%=category5.id%>" class="category5_delete">削除</button>
+                </span>
+                <% end %>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h2>サブカテゴリ5追加</h2>
+            <div>
+                <%= form_for [:admin, @category5], url: admin_category5s_path, method: :POST, remote: false do |f| %>
+                <p><%= f.text_field :category5_name %></p>
+                <p><%= f.submit 'サブカテゴリ5を追加する', id: "category5_submit" %></p>
+                <% end %>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
 
 <div>サブカテゴリ6</div>
 <% f.collection_select :category6_id, Category6.all, :id, :category6_name %>
 
-<div class="new_button sub6_button">サブカテゴリ6を追加する</div>
+<div class="new_button category6_button">サブカテゴリ6を追加する</div>
+
+    <div class="category6_modal_wrapper">
+        <div class="category6_modal category6_modal_content">
+            <p class="text-right">
+            <span class="fa_wrapper"><%= fa_icon "times" %></span>
+            </p>
+            <h1>サブカテゴリ6追加フォーム</h1>
+            <h2>サブカテゴリ6一覧</h2>
+            <div class="category6_wrapper">
+                <% @category6.each do |category6| %>
+                <span><%= category6.category6_name %>
+                <button type="button" name="削除" value="<%=category6.id%>" class="category6_delete">削除</button>
+                </span>
+                <% end %>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h2>サブカテゴリ6追加</h2>
+            <div>
+                <%= form_for [:admin, @category6], url: admin_category6s_path, method: :POST, remote: false do |f| %>
+                <p><%= f.text_field :category6_name %></p>
+                <p><%= f.submit 'サブカテゴリ6を追加する', id: "category6_submit" %></p>
+                <% end %>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
 
 <% end %>
 
