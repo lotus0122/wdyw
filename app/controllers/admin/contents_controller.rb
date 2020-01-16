@@ -8,19 +8,19 @@ def new
     @contents = Content.all
     @content = Content.new
     @main_categories = MainCategory.all.order(id: "DESC")
-    @main_categories = MainCategory.new
-    @category1s = Category1s.all.order(id: "DESC")
-    @category1s = Category1s.new
-    @category2s = Category2s.all.order(id: "DESC")
-    @category2s = Category2s.new
-    @category3s = Category3s.all.order(id: "DESC")
-    @category3s = Category3s.new
-    @category4s = Category4s.all.order(id: "DESC")
-    @category4s = Category4s.new
-    @category5s = Category5s.all.order(id: "DESC")
-    @category5s = Category5s.new
-    @category6s = Category6s.all.order(id: "DESC")
-    @category6s = Category6s.new
+    @main_category = MainCategory.new
+    @category1s = Category1.all.order(id: "DESC")
+    @category1 = Category1.new
+    @category2s = Category2.all.order(id: "DESC")
+    @category2 = Category2.new
+    @category3s = Category3.all.order(id: "DESC")
+    @category3 = Category3.new
+    @category4s = Category4.all.order(id: "DESC")
+    @category4 = Category4.new
+    @category5s = Category5.all.order(id: "DESC")
+    @category5 = Category5.new
+    @category6s = Category6.all.order(id: "DESC")
+    @category6 = Category6.new
 end
 
 def create

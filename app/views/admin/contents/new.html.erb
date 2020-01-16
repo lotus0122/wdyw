@@ -8,13 +8,13 @@
 <%= form_for([:admin, @content]) do |f| %>
 
 <div>コンテンツ名</div>
-<%= f.text_field :content_name %>
+<p><%= f.text_field :content_name %></p>
 
 <div>コンテンツ説明</div>
-<%= f.text_field :content_text %>
+<p><%= f.text_field :content_text %></p>
 
 <div>コンテンツ画像</div>
-<%= f.attachment_field :content_image %>
+<%# <p><%= f.attachment_field :content_image %>
 
 <div>メインカテゴリ</div>
 <% f.collection_select :main_category_id, MainCategory.all, :id, :main_category_name %>
@@ -216,7 +216,6 @@
             <div class="col-sm-4"></div>
         </div>
     </div>
-
 
 <div>サブカテゴリ6</div>
 <% f.collection_select :category6_id, Category6.all, :id, :category6_name %>
