@@ -15,7 +15,95 @@
 //= require turbolinks
 //= require_tree .
 
-$ (function () {
+//------------------------------------------------------------------------------------------
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('main_button')) {
+//         $('.main_modal').show();
+//     } else {
+//         $('.main_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category1_button')) {
+//         $('.category1_modal').show();
+//     } else {
+//         $('.category1_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category2_button')) {
+//         $('.category2_modal').show();
+//     } else {
+//         $('.category2_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category3_button')) {
+//         $('.category3_modal').show();
+//     } else {
+//         $('.category3_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category4_button')) {
+//         $('.category4_modal').show();
+//     } else {
+//         $('.category4_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category5_button')) {
+//         $('.category5_modal').show();
+//     } else {
+//         $('.category5_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category6_button')) {
+//         $('.category6_modal').show();
+//     } else {
+//         $('.category6_modal').show();
+//     }
+//     });
+// });
+
+//------------------------------------------------------------------------------------------
+
+$(function () {
     $('.main_button').on('click', function () {
         $('.main_modal_wrapper').show();
         $('.main_modal').show();
@@ -135,6 +223,60 @@ $(function () {
                 $('.submit-btn').prop('disabled', false);　//ここで解除している
             })
     })
+});
+
+
+$(function () {
+    $('.main_delete').off('click');
+    $(".main_delete").on('click', function (e) {
+        e.preventDefault();
+
+        var params = $("#new_main").serialize();
+        var clickEle = $(this)
+
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var mainID = clickEle.val();
+        $.ajax({
+            url: '../main_categories/' + mainID,
+            type: 'DELETE',
+            data: params,
+            dataType: 'json',
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + mainID);
+                $('select#main_category_main_category_id option[value=' + mainID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
+
+    });
+});
+
+$(function ($) {
+    $(document).on('click', ".main_delete2", function (e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var mainID = clickEle.val();
+        $.ajax({
+            url: '../main_categories/' + genreID,
+            type: 'DELETE',
+            data: { 'id': mainID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + mainID);
+                $('select#main_category_main_category_id option[value=' + mainID + ']').remove();
+            },
+            error: function (res) {
+            }
+        })
+    });
 });
 
 //---------------------------------------------main_category_ajax_bottom------------------------------------------

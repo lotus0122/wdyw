@@ -14,7 +14,8 @@
 <p><%= f.text_field :content_text %></p>
 
 <div>コンテンツ画像</div>
-<%# <p><%= f.attachment_field :content_image %>
+<p><%= f.attachment_field :content_image %></p>
+
 
 <div>メインカテゴリ</div>
 <% f.collection_select :main_category_id, MainCategory.all, :id, :main_category_name %>
@@ -40,14 +41,16 @@
             <br>
             <h2>メインカテゴリ追加</h2>
             <div>
+            <%# contentのcreateが起動するので修正必要 %>
                 <%= form_for [:admin, @main_category], url: admin_main_categories_path, method: :POST, remote: false do |f| %>
                 <p><%= f.text_field :main_category_name %></p>
-                <p><%= f.submit 'メインカテゴリを追加する', id: "main_submit" %></p>
+                <p><%= f.submit 'メインカテゴリを追加する', id: "main_category_submit" %></p>
                 <% end %>
             </div>
             <div class="col-sm-4"></div>
         </div>
     </div>
+
 
 <div>サブカテゴリ1</div>
 <% f.collection_select :category1_id, Category1.all, :id, :category1_name %>
@@ -62,7 +65,7 @@
             <h1>サブカテゴリ1追加フォーム</h1>
             <h2>サブカテゴリ1一覧</h2>
             <div class="category1_wrapper">
-                <% @category1.each do |category1| %>
+                <% @category1s.each do |category1| %>
                 <span><%= category1.category1_name %>
                 <button type="button" name="削除" value="<%=category1.id%>" class="category1_delete">削除</button>
                 </span>
@@ -95,7 +98,7 @@
             <h1>サブカテゴリ2追加フォーム</h1>
             <h2>サブカテゴリ2一覧</h2>
             <div class="category2_wrapper">
-                <% @category2.each do |category2| %>
+                <% @category2s.each do |category2| %>
                 <span><%= category2.category2_name %>
                 <button type="button" name="削除" value="<%=category2.id%>" class="category2_delete">削除</button>
                 </span>
@@ -129,7 +132,7 @@
             <h1>サブカテゴリ3追加フォーム</h1>
             <h2>サブカテゴリ3一覧</h2>
             <div class="category3_wrapper">
-                <% @category3.each do |category3| %>
+                <% @category3s.each do |category3| %>
                 <span><%= category3.category3_name %>
                 <button type="button" name="削除" value="<%=category3.id%>" class="category3_delete">削除</button>
                 </span>
@@ -163,7 +166,7 @@
             <h1>サブカテゴリ4追加フォーム</h1>
             <h2>サブカテゴリ4一覧</h2>
             <div class="category4_wrapper">
-                <% @category4.each do |category4| %>
+                <% @category4s.each do |category4| %>
                 <span><%= category4.category4_name %>
                 <button type="button" name="削除" value="<%=category4.id%>" class="category4_delete">削除</button>
                 </span>
@@ -197,7 +200,7 @@
             <h1>サブカテゴリ5追加フォーム</h1>
             <h2>サブカテゴリ5一覧</h2>
             <div class="category5_wrapper">
-                <% @category5.each do |category5| %>
+                <% @category5s.each do |category5| %>
                 <span><%= category5.category5_name %>
                 <button type="button" name="削除" value="<%=category5.id%>" class="category5_delete">削除</button>
                 </span>
@@ -230,7 +233,7 @@
             <h1>サブカテゴリ6追加フォーム</h1>
             <h2>サブカテゴリ6一覧</h2>
             <div class="category6_wrapper">
-                <% @category6.each do |category6| %>
+                <% @category6s.each do |category6| %>
                 <span><%= category6.category6_name %>
                 <button type="button" name="削除" value="<%=category6.id%>" class="category6_delete">削除</button>
                 </span>
@@ -250,6 +253,8 @@
         </div>
     </div>
 
+
+<ul><%= f.submit '新規コンテンツを登録をする' %></ul>
 
 <% end %>
 

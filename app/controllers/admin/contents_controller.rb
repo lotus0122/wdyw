@@ -25,14 +25,17 @@ end
 
 def create
     content = Content.new(content_params)
-    content.save
-    redirect_to
+    if content.save
+        redirect_to top_path
+    else
+        redirect_to new_admin_content_path , notice:"コンテンツ追加失敗"
+    end
 end
     
 def update
     content = Content.find(params[:id])
     content.update(content_params)
-    redirect_to 
+    redirect_to top_path
 end
     
 def destroy
