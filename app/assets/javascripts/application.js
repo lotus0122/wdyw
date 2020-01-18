@@ -12,8 +12,13 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+//= require jquery3
+
+//= require bootstrap-sprockets
 //= require_tree .
+//= require cocoon
+//= require popper
+//= require tether
 
 //------------------------------------------------------------------------------------------
 
@@ -30,12 +35,10 @@
 // });
 
 // $(function() {
-//     $(document).on('click', '.new_button', function() {
-//         $('.new_modal_wrapper').show();
-//         $('.new_modal').show();
-//         if ($(this).hasClass('category1_button')) {
+//     $(document).on('click', '.category1_button', function() {
+//         $('.category1_modal_wrapper').show();
 //         $('.category1_modal').show();
-//     } else {
+//         if ($(this).hasClass('create_category1_button')) {
 //         $('.category1_modal').show();
 //     }
 //     });
@@ -103,7 +106,22 @@
 
 //------------------------------------------------------------------------------------------
 
+
 $(function () {
+    $(".effect div").css("opacity", "0");
+    $(window).scroll(function () {
+        $(".effect").each(function () {
+            var imgPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > imgPos - windowHeight + windowHeight / 5) {
+                $("div", this).css("opacity", "1");
+            } else {
+                $("div", this).css("opacity", "0");
+            }
+        });
+    });
+
     $('.main_button').on('click', function () {
         $('.main_modal_wrapper').show();
         $('.main_modal').show();
@@ -180,7 +198,7 @@ $(function () {
         $('.category6_modal').hide();
         $('.category6_modal_content').hide();
     })
-    
+
 });
 
 //-----------------------------------------------main_category_ajax_top-------------------------------------------

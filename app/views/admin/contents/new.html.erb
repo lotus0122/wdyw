@@ -1,3 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>wdyw</title>
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/lightbox.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="js/jquery.inview.min.js"></script>
+  <script src="js/lightbox.js"></script>
+</head>
+
+<body>
 
 <h1>コンテンツ追加フォーム</h1>
 <hr>
@@ -8,19 +26,28 @@
 <%= form_for([:admin, @content]) do |f| %>
 
 <div>コンテンツ名</div>
-<p><%= f.text_field :content_name %></p>
+<div class="text1">
+    <p><%= f.text_field :content_name %></p>
+</div>
 
 <div>コンテンツ説明</div>
-<p><%= f.text_field :content_text %></p>
+<div class="text2">
+    <p><%= f.text_field :content_text %></p>
+</div>
 
 <div>コンテンツ画像</div>
 <p><%= f.attachment_field :content_image %></p>
 
 
 <div>メインカテゴリ</div>
-<% f.collection_select :main_category_id, MainCategory.all, :id, :main_category_name %>
 
+<div class="select_box">
+<%= f.collection_select :main_category_id, MainCategory.all, :id, :main_category_name %>
+</div>
+
+<ul>
 <div class="new_button main_button">メインカテゴリを追加する</div>
+</ul>
 
     <div class="main_modal_wrapper">
         <div class="main_modal main_modal_content">
@@ -53,9 +80,14 @@
 
 
 <div>サブカテゴリ1</div>
-<% f.collection_select :category1_id, Category1.all, :id, :category1_name %>
 
+<div class="select_box">
+<%= f.collection_select :category1_id, Category1.all, :id, :category1_name %>
+</div>
+
+<ul>
 <div class="new_button category1_button">サブカテゴリ1を追加する</div>
+</ul>
 
     <div class="category1_modal_wrapper">
         <div class="category1_modal category1_modal_content">
@@ -86,9 +118,14 @@
     </div>
 
 <div>サブカテゴリ2</div>
-<% f.collection_select :category2_id, Category2.all, :id, :category2_name %>
 
+<div class="select_box">
+<%= f.collection_select :category2_id, Category2.all, :id, :category2_name %>
+</div>
+
+<ul>
 <div class="new_button category2_button">サブカテゴリ2を追加する</div>
+</ul>
 
     <div class="category2_modal_wrapper">
         <div class="category2_modal category2_modal_content">
@@ -120,9 +157,14 @@
 
 
 <div>サブカテゴリ3</div>
-<% f.collection_select :category3_id, Category3.all, :id, :category3_name %>
 
+<div class="select_box">
+<%= f.collection_select :category3_id, Category3.all, :id, :category3_name %>
+</div>
+
+<ul>
 <div class="new_button category3_button">サブカテゴリ3を追加する</div>
+</ul>
 
     <div class="category3_modal_wrapper">
         <div class="category3_modal category3_modal_content">
@@ -154,9 +196,14 @@
 
 
 <div>サブカテゴリ4</div>
-<% f.collection_select :category4_id, Category4.all, :id, :category4_name %>
 
+<div class="select_box">
+<%= f.collection_select :category4_id, Category4.all, :id, :category4_name %>
+</div>
+
+<ul>
 <div class="new_button category4_button">サブカテゴリ4を追加する</div>
+</ul>
 
     <div class="category4_modal_wrapper">
         <div class="category4_modal category4_modal_content">
@@ -188,9 +235,14 @@
 
 
 <div>サブカテゴリ5</div>
-<% f.collection_select :category5_id, Category5.all, :id, :category5_name %>
 
+<div class="select_box">
+<%= f.collection_select :category5_id, Category5.all, :id, :category5_name %>
+</div>
+
+<ul>
 <div class="new_button category5_button">サブカテゴリ5を追加する</div>
+</ul>
 
     <div class="category5_modal_wrapper">
         <div class="category5_modal category5_modal_content">
@@ -221,9 +273,14 @@
     </div>
 
 <div>サブカテゴリ6</div>
-<% f.collection_select :category6_id, Category6.all, :id, :category6_name %>
 
+<div class="select_box">
+<%= f.collection_select :category6_id, Category6.all, :id, :category6_name %>
+</div>
+
+<ul>
 <div class="new_button category6_button">サブカテゴリ6を追加する</div>
+</ul>
 
     <div class="category6_modal_wrapper">
         <div class="category6_modal category6_modal_content">
@@ -253,9 +310,13 @@
         </div>
     </div>
 
-
+<div class="text3">
 <ul><%= f.submit '新規コンテンツを登録をする' %></ul>
+</div>
 
 <% end %>
 
 </div>
+
+</body>
+</html>

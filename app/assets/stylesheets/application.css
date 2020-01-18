@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +14,393 @@
  *= require_tree .
  *= require_self
  */
+.content_layout p {
+  position: absolute;
+  color: black;
+  top: 50%;
+  left: 50%;
+}
+
+.text1 {
+  display: inline-block;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px black;
+  /*線*/
+  border-radius: 1px;
+  /*角の丸み*/
+}
+
+.text1 p {
+  margin: 0;
+  padding: 0;
+}
+
+.text2 {
+  display: inline-block;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px black;
+  /*線*/
+  border-radius: 1px;
+  /*角の丸み*/
+}
+
+.text2 p {
+  margin: 0;
+  padding: 0;
+}
+
+.text3 {
+  display: inline-block;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px black;
+  /*線*/
+  border-radius: 1px;
+  /*角の丸み*/
+}
+
+.text3 p {
+  margin: 10;
+  padding: 10;
+}
+
+.main_button {
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 5px;
+  opacity: .9;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.main_modal_wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 1;
+  display: none;
+}
+
+.main_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 450px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 100px auto 0;
+  border: 1px solid #eee;
+  display: none;
+  text-align: right;
+}
+
+.main_modal_content {
+  display: none;
+  text-align: center;
+}
+
+.create_main_button {
+  margin-right: 30px;
+}
+
+.category1_button {
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 5px;
+  opacity: .9;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.category1_modal_wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 1;
+  display: none;
+}
+
+.category1_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 450px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 100px auto 0;
+  border: 1px solid #eee;
+  display: none;
+  text-align: right;
+}
+
+.category1_modal_content {
+  display: none;
+  text-align: center;
+}
+
+.create_category1_button {
+  margin-right: 30px;
+}
+
+.category2_button {
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 5px;
+  opacity: .9;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.category2_modal_wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 1;
+  display: none;
+}
+
+.category2_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 450px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 100px auto 0;
+  border: 1px solid #eee;
+  display: none;
+  text-align: right;
+}
+
+.category2_modal_content {
+  display: none;
+  text-align: center;
+}
+
+.create_category2_button {
+  margin-right: 30px;
+}
+
+.category3_button {
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 5px;
+  opacity: .9;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.category3_modal_wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 1;
+  display: none;
+}
+
+.category3_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 450px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 100px auto 0;
+  border: 1px solid #eee;
+  display: none;
+  text-align: right;
+}
+
+.category3_modal_content {
+  display: none;
+  text-align: center;
+}
+
+.create_category3_button {
+  margin-right: 30px;
+}
+
+.category4_button {
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 5px;
+  opacity: .9;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.category4_modal_wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 1;
+  display: none;
+}
+
+.category4_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 450px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 100px auto 0;
+  border: 1px solid #eee;
+  display: none;
+  text-align: right;
+}
+
+.category4_modal_content {
+  display: none;
+  text-align: center;
+}
+
+.create_category4_button {
+  margin-right: 30px;
+}
+
+.category5_button {
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 5px;
+  opacity: .9;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.category5_modal_wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 1;
+  display: none;
+}
+
+.category5_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 450px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 100px auto 0;
+  border: 1px solid #eee;
+  display: none;
+  text-align: right;
+}
+
+.category5_modal_content {
+  display: none;
+  text-align: center;
+}
+
+.create_category5_button {
+  margin-right: 30px;
+}
+
+.category6_button {
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 5px;
+  opacity: .9;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.category6_modal_wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 1;
+  display: none;
+}
+
+.category6_modal {
+  position: absolute;
+  background-color: #fff;
+  width: 450px;
+  height: 350px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 100px auto 0;
+  border: 1px solid #eee;
+  display: none;
+  text-align: right;
+}
+
+.category6_modal_content {
+  display: none;
+  text-align: center;
+}
+
+.create_category6_button {
+  margin-right: 30px;
+}
+
+.select_box {
+  display: inline-block;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px gray;
+  /*線*/
+  border-radius: 1px;
+  /*角の丸み*/
+}
+
+.button:hover {
+  opacity: 1;
+}
+
+.fa_wrapper {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.flash_color {
+  color: red;
+}
+/*# sourceMappingURL=application.css.map */
