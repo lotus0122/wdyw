@@ -14,6 +14,9 @@
  *= require_tree .
  *= require_self
  */
+/*
+ *= require font-awesome
+ */
 .content_layout p {
   position: absolute;
   color: black;
@@ -25,7 +28,7 @@
   display: inline-block;
   font-weight: bold;
   background: #FFF;
-  border: solid 3px black;
+  border: solid 1px black;
   /*線*/
   border-radius: 1px;
   /*角の丸み*/
@@ -40,7 +43,7 @@
   display: inline-block;
   font-weight: bold;
   background: #FFF;
-  border: solid 3px black;
+  border: solid 1px black;
   /*線*/
   border-radius: 1px;
   /*角の丸み*/
@@ -55,9 +58,9 @@
   display: inline-block;
   font-weight: bold;
   background: #FFF;
-  border: solid 3px black;
+  border: solid 1px black;
   /*線*/
-  border-radius: 1px;
+  border-radius: 30px;
   /*角の丸み*/
 }
 
@@ -66,17 +69,17 @@
   padding: 10;
 }
 
-.main_button {
+.main_category_button {
   display: inline-block;
   cursor: pointer;
-  border: 2px solid black;
+  border: 2px solid white;
   padding: 5px;
   opacity: .9;
   -webkit-transition: .3s;
   transition: .3s;
 }
 
-.main_modal_wrapper {
+.main_category_modal_wrapper {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -87,7 +90,7 @@
   display: none;
 }
 
-.main_modal {
+.main_category_modal {
   position: absolute;
   background-color: #fff;
   width: 450px;
@@ -102,12 +105,12 @@
   text-align: right;
 }
 
-.main_modal_content {
+.main_category_modal_content {
   display: none;
   text-align: center;
 }
 
-.create_main_button {
+.create_main_category_button {
   margin-right: 30px;
 }
 
@@ -385,7 +388,7 @@
   display: inline-block;
   font-weight: bold;
   background: #FFF;
-  border: solid 3px gray;
+  border: solid 1px gray;
   /*線*/
   border-radius: 1px;
   /*角の丸み*/
@@ -398,6 +401,16 @@
 .fa_wrapper {
   cursor: pointer;
   padding: 10px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.field_color {
+  display: inline-block;
+  background: ghostwhite;
+  border: solid 1px gray;
 }
 
 .flash_color {

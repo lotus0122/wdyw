@@ -87,3 +87,5 @@ gem 'faker-japanese'
 gem 'gimei'
 
 gem 'rails-i18n'
+
+gem 'rb-readline'

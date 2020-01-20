@@ -1,4 +1,5 @@
 class Admin::ContentsController < ApplicationController
+    protect_from_forgery :expect => [:create, :destroy]
     #before_action :authenticate_admin!
 
 def index
@@ -26,7 +27,7 @@ end
 def create
     content = Content.new(content_params)
     if content.save
-        redirect_to top_path
+        redirect_to top_path(content)
     else
         redirect_to new_admin_content_path , notice:"コンテンツ追加失敗"
     end
@@ -39,6 +40,11 @@ def update
 end
     
 def destroy
+end
+
+private
+def content_params
+    params.require(:content).permit(:id, :content_name, :content_text, :content_image, :main_category_id, :category1_id, :category2_id, :category3_id, :category4_id, :category5_id, :category6_id, :create,:destroy)
 end
 
 end
