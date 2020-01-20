@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_052351) do
+ActiveRecord::Schema.define(version: 2020_01_20_130912) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_052351) do
     t.integer "main_category_id"
     t.string "content_name"
     t.string "content_text"
-    t.string "content_image"
+    t.string "image_id"
     t.integer "category1_id"
     t.integer "category2_id"
     t.integer "category3_id"

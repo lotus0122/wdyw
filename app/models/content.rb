@@ -1,5 +1,5 @@
 class Content < ApplicationRecord
-    attachment :content_image
+    attachment :image
 
     belongs_to :main_category
     belongs_to :category1
