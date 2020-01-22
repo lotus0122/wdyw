@@ -3,11 +3,13 @@
 <%= link_to "about", about_path %>
 </div>
 
-<div>
+<% if admin_signed_in? %>
+<div class="new_content_layout">
 <%= link_to "新規コンテンツを追加", new_admin_content_path %>
 </div>
+<% end %>
 
-<div>あなたの求めるもの</div>
+<div>あなたの求めるものを探そう</div>
 
 <div>カテゴリー一覧</div>
 
@@ -15,6 +17,6 @@
 
 <% @contents.each do |content| %>
 
-<%= link_to content.content_name, path(content.content_id)  %>
+<%= link_to content.category1.category1_name, content_path(content.category1.category1_id)  %>
 
 <% end %>

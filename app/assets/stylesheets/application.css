@@ -17,6 +17,10 @@
 /*
  *= require font-awesome
  */
+.new_content_layout {
+  text-align: right;
+}
+
 .content_layout p {
   position: absolute;
   color: black;
