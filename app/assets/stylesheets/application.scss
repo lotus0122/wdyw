@@ -21,13 +21,6 @@
     text-align:right;
 }
 
-.content_layout p {
-    position: absolute;
-    color: black;
-    top: 50%;
-    left: 50%;
-}
-
 .text1{
     display: inline-block;
     font-weight: bold;
@@ -427,3 +420,22 @@
     color: red;
 }
 
+//-------------------show-------------------------
+
+// 初期非表示
+
+.category3_view{
+    display:none;
+}
+
+.category4_view{
+    display:none;
+}
+
+.category5_view{
+    display:none;
+}
+
+.category6_view{
+    display:none;
+}

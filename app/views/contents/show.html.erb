@@ -9,14 +9,71 @@
 
 <div>気分で選ぼう！</div>
 
-<% @content.each do |content| %>
-
-<div class="content_layout">
-<%= attachment_image_tag content, content_image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170'  %>
-<p><%= content_name %></p>
-<p><%= content_text %></p>
+<%# カテゴリ1の情報を持って入ってきてそれに紐付いたカテゴリ2を一覧表示 %>
+<div class="category2_view">
+    <% @content.category1.each do |content| %>
+    <div class="content2">
+    <a href="'/contents/' + 'category1.category1_id' + 'category2.category2_id'">
+    <%= attachment_image_tag content.category2, image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
+    </a>
+    </div>
+    <p><%= content.category2.category2_name %></p>
+    <% end %>
 </div>
-<%# IDに紐付いた画像を表示していく(ajax) %>
-<%# リンクで最後にたどり着いたidに飛びたい %>
 
-<% end %>
+<%# カテゴリ1カテゴリ2に紐付いたカテゴリ3を一覧表示 %>
+<div class="category3_view">
+    <% @content.category1.category2.each do |content| %>
+    <div class="content3">
+    <a href="'/contents/' + 'category1.category1_id' + 'category2.category2_id' + 'category3.category3_id'">
+    <%= attachment_image_tag content.category3, image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170'  %>
+    </a>
+    </div>
+    <p><%= content.category3.category3_name %></p>
+    <% end %>
+</div>
+
+<%# カテゴリ1カテゴリ2カテゴリ3に紐付いたカテゴリ4を一覧表示 %>
+<div class="category4_view">
+    <% @content.category1.category2.category3.each do |content| %>
+    <div class="content4">
+    <a href="'/contents/' + 'category1.category1_id' + 'category2.category2_id' + 'category3.category3_id' + 'category4.category4_id'">
+    <%= attachment_image_tag content.category4, image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170'  %>
+    </a>
+    </div>
+    <p><%= content.category4.category4_name %></p>
+    <% end %>
+</div>
+
+<%# カテゴリ1カテゴリ2カテゴリ3カテゴリ4に紐付いたカテゴリ5を一覧表示 %>
+<div class="category5_view">
+    <% @content.category1.category2.category3.category4.each do |content| %>
+    <div class="content5">
+    <a href="'/contents/' + 'category1.category1_id' + 'category2.category2_id' + 'category3.category3_id' + 'category4.category4_id' + 'category5.category5_id'">
+    <%= attachment_image_tag content.category5, image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170'  %>
+    </a>
+    </div>
+    <p><%= content.category5.category5_name %></p>
+    <% end %>
+</div>
+
+<%# カテゴリ1カテゴリ2カテゴリ3カテゴリ4に紐付いたカテゴリ5を一覧表示 %>
+<div class="category6_view">
+    <% @content.category1.category2.category3.category4.category5.each do |content| %>
+    <div class="content6">
+    <a href="'/contents/' + 'category1.category1_id' + 'category2.category2_id' + 'category3.category3_id' + 'category4.category4_id' + 'category5.category5_id' + 'category6.category6_id'">
+    <%= attachment_image_tag content.category6, image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170'  %>
+    </a>
+    </div>
+    <p><%= content.category6.category6_name %></p>
+    <% end %>
+</div>
+
+<%# もし、カテゴリをclickした時に次のカテゴリが存在しなければidを持ってindexに飛ぶ %>
+<%# カテゴリ2のみ表示しておいてjqueryでclick時に次のものが表示した上で元のものを非表示にする %>
+
+<%# <p><%= content.categiry2.category2_text %>
+<%# IDに紐付いた画像を表示していく(ajax) %>
+
+<%# リンクで最後にたどり着いたidに飛びたい %>
+<%# カテゴリ6まで行かなくても次がnillだったらそこまでのidでindexページに飛ぶように %>

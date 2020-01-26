@@ -21,13 +21,6 @@
   text-align: right;
 }
 
-.content_layout p {
-  position: absolute;
-  color: black;
-  top: 50%;
-  left: 50%;
-}
-
 .text1 {
   display: inline-block;
   font-weight: bold;
@@ -419,5 +412,21 @@
 
 .flash_color {
   color: red;
+}
+
+.category3_view {
+  display: none;
+}
+
+.category4_view {
+  display: none;
+}
+
+.category5_view {
+  display: none;
+}
+
+.category6_view {
+  display: none;
 }
 /*# sourceMappingURL=application.css.map */

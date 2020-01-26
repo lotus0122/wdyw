@@ -878,3 +878,141 @@ $(function ($) {
 
 //---------------------------------------------category6_ajax_bottom------------------------------------------
 
+//---------------------------------------------show_ajax_top--------------------------------------------------
+
+
+$(function(){
+    $(document).on('click',".content2",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        })
+        .done(function(data){
+            console.log(data.name2);
+            console.log(data.image);
+
+            // カテゴリ2を隠す
+            $('.category2_view').fadeOut();
+            // もしカテゴリ1カテゴリ2に紐づくカテゴリ３がnullだったらdetail2へ
+            if (data.name1.name2.name3 == null){
+                $('.content2 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2');
+            } else {
+            // そうでなければカテゴリ2のidを取得してrender
+            $('.content2 a').attr('href', '/contents/' + 'data.name1' + 'data.name2');
+            }
+            // カテゴリ3を表示
+            $('.category3_view').fadeIn();
+            // $('#content-image img').attr("src", '' + 'data.image');
+        })
+    });
+});
+
+$(function(){
+    $(document).on('click',".content3",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        })
+        .done(function(data){
+            console.log(data.name3);
+            console.log(data.image);
+
+            // カテゴリ3を隠す
+            $('.category3_view').fadeOut();
+            // これまでのカテゴリに紐づくカテゴリ4がnullだったらdetail2へ
+            if (data.name1.name2.name3.name4 == null){
+                $('.content3 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2' + 'data.name3');
+            } else {
+            // カテゴリ3のidを取得してrender
+            $('.content3 a').attr('href', '/contents/' + 'data.name1' + 'data.name2' + 'data.name3');
+            }
+            // カテゴリ4を表示
+            $('.category4_view').fadeIn();
+            // $('#content-image img').attr("src", '' + 'data.image');
+        })
+    });
+});
+
+$(function(){
+    $(document).on('click',".content4",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        })
+        .done(function(data){
+            console.log(data.name4);
+            console.log(data.image);
+
+            // カテゴリ4を隠す
+            $('.category4_view').fadeOut();
+            // これまでのカテゴリに紐づくカテゴリ5がnullだったらdetail2へ
+            if (data.name1.name2.name3.name4.name5 == null){
+                $('.content4 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4');
+            } else {
+            // カテゴリ4のidを取得してrender
+            $('.content4 a').attr('href', '/contents/' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4');
+            }
+            // カテゴリ5を表示
+            $('.category5_view').fadeIn();
+            // $('#content-image img').attr("src", '' + 'data.image');
+        })
+    });
+});
+
+$(function(){
+    $(document).on('click',".content5",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        })
+        .done(function(data){
+            console.log(data.name5);
+            console.log(data.image);
+
+            // カテゴリ5を隠す
+            $('.category5_view').fadeOut();
+            // これまでのカテゴリに紐づくカテゴリ6がnullだったらdetail2へ
+            if (data.name1.name2.name3.name4.name5.name6 == null){
+                $('.content4 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4' + 'data.name5');
+            } else {
+            // カテゴリ5のidを取得してrender
+            $('.content5 a').attr('href', '/contents/' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4' + 'data.name5');
+            }
+            // カテゴリ6を表示
+            $('.category6_view').fadeIn();
+            // $('#content-image img').attr("src", '' + 'data.image');
+        })
+    });
+});
+
+$(function(){
+    $(document).on('click',".content6",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        })
+        .done(function(data){
+            console.log(data.name6);
+            console.log(data.image);
+
+            // カテゴリ6を隠す
+            $('.category6_view').fadeOut();
+            // 最後のカテゴリなので画像clickでdetail2へ飛ばす
+            $('.content6 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4' + 'data.name5' + 'data.name6');
+            // indexへのリンク？
+            // $('.category3_view').fadeIn();
+            // $('#content-image img').attr("src", '' + 'data.image');
+        })
+    });
+});
+
+// 次のidがnillの時indexへ飛びたい
+
+// カテゴリ1に紐付いたカテゴリ２(1-1~)の画像をクリックすると(1-2-1~)が表示できるようにしたい
+
+// 最初の画像表示を非表示にして新しく起動していく？
