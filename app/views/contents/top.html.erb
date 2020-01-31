@@ -16,8 +16,10 @@
 <%# <div>検索</div> %>
 
 <% @contents.each do |content| %>
-
-<%= content.category1.category1_name %>
-<%# <%= link_to content.category1.category1_name, content_path(content.category1.category1_id)  %>
-
+<%# カテゴリ2がNoContentだった場合非表示 %>
+    <% if content.category2.category2_name == 'NoContent' %>
+        <%= link_to content.content_name, content_path(content) %>
+    <% end %>
 <% end %>
+
+<%# <%= link_to content.category1.category1_name, content_path(content.category1.category1_id)  %>
