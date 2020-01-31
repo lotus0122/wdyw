@@ -889,17 +889,17 @@ $(function(){
             dataType: 'json',
         })
         .done(function(data){
-            console.log(data.name2);
+            console.log(data.category2_name);
             console.log(data.image);
 
             // カテゴリ2を隠す
             $('.category2_view').fadeOut();
-            // もしカテゴリ1カテゴリ2に紐づくカテゴリ３がnullだったらdetail2へ
-            if (data.name1.name2.name3 == null){
-                $('.content2 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2');
+            // もしカテゴリ1カテゴリ2に紐づくカテゴリ３のidが1だったらdetail2へ
+            if (data.name.category2_id.category3_id == 1){
+                $('.content2 a').attr('href', '/contents/detail2' + 'data.name' + 'data.category2_id');
             } else {
             // そうでなければカテゴリ2のidを取得してrender
-            $('.content2 a').attr('href', '/contents/' + 'data.name1' + 'data.name2');
+            $('.content2 a').attr('href', '/contents/' + 'data.name' + 'data.category2_id');
             }
             // カテゴリ3を表示
             $('.category3_view').fadeIn();
@@ -916,17 +916,17 @@ $(function(){
             dataType: 'json',
         })
         .done(function(data){
-            console.log(data.name3);
+            console.log(data.category3_name);
             console.log(data.image);
 
             // カテゴリ3を隠す
             $('.category3_view').fadeOut();
-            // これまでのカテゴリに紐づくカテゴリ4がnullだったらdetail2へ
-            if (data.name1.name2.name3.name4 == null){
-                $('.content3 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2' + 'data.name3');
+            // これまでのカテゴリに紐づくカテゴリ4のidが1だったらdetail2へ
+            if (data.name.category2_id.category3_id.category4_id == 1){
+                $('.content3 a').attr('href', '/contents/detail2' + 'data.name' + 'data.category2_id' + 'data.category3_id');
             } else {
             // カテゴリ3のidを取得してrender
-            $('.content3 a').attr('href', '/contents/' + 'data.name1' + 'data.name2' + 'data.name3');
+            $('.content3 a').attr('href', '/contents/' + 'data.name' + 'data.category2_id' + 'data.category3_id');
             }
             // カテゴリ4を表示
             $('.category4_view').fadeIn();
@@ -943,17 +943,17 @@ $(function(){
             dataType: 'json',
         })
         .done(function(data){
-            console.log(data.name4);
+            console.log(data.category4_name);
             console.log(data.image);
 
             // カテゴリ4を隠す
             $('.category4_view').fadeOut();
-            // これまでのカテゴリに紐づくカテゴリ5がnullだったらdetail2へ
-            if (data.name1.name2.name3.name4.name5 == null){
-                $('.content4 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4');
+            // これまでのカテゴリに紐づくカテゴリ5のidが1だったらdetail2へ
+            if (data.name.category2_id.category3_id.category4_id.category5_id == 1){
+                $('.content4 a').attr('href', '/contents/detail2' + 'data.name' + 'data.category2_id' + 'data.category3_id' + 'data.category4_id');
             } else {
             // カテゴリ4のidを取得してrender
-            $('.content4 a').attr('href', '/contents/' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4');
+            $('.content4 a').attr('href', '/contents/' + 'data.name' + 'data.category2_id' + 'data.category3_id' + 'data.category4_id');
             }
             // カテゴリ5を表示
             $('.category5_view').fadeIn();
@@ -970,17 +970,17 @@ $(function(){
             dataType: 'json',
         })
         .done(function(data){
-            console.log(data.name5);
+            console.log(data.category5_name);
             console.log(data.image);
 
             // カテゴリ5を隠す
             $('.category5_view').fadeOut();
-            // これまでのカテゴリに紐づくカテゴリ6がnullだったらdetail2へ
-            if (data.name1.name2.name3.name4.name5.name6 == null){
-                $('.content4 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4' + 'data.name5');
+            // これまでのカテゴリに紐づくカテゴリ6のidが1だったらdetail2へ
+            if (data.name.category2_id.category3_id.category4_id.category5_id.category6_id == 1){
+                $('.content4 a').attr('href', '/contents/detail2' + 'data.name' + 'data.category2_id' + 'data.category3_id' + 'data.category4_id' + 'data.category5_id');
             } else {
             // カテゴリ5のidを取得してrender
-            $('.content5 a').attr('href', '/contents/' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4' + 'data.name5');
+            $('.content5 a').attr('href', '/contents/' + 'data.name' + 'data.category2_id' + 'data.category3_id' + 'data.category4_id' + 'data.category5_id');
             }
             // カテゴリ6を表示
             $('.category6_view').fadeIn();

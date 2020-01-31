@@ -29,7 +29,6 @@ def create
     if content.save
         redirect_to top_path(content)
     else
-        binding.pry
         redirect_to new_admin_content_path , notice:"コンテンツの追加に失敗しました。"
     end
 end
