@@ -16,10 +16,10 @@
  /*
  *= require font-awesome
  */
+ 
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
-.new_content_link_layout{
-    text-align:right;
-}
 
 .text1{
     display: inline-block;
@@ -424,6 +424,10 @@
 
 // 初期非表示
 
+.category2_off{
+    display:none;
+}
+
 .category3_view{
     display:none;
 }
@@ -439,3 +443,4 @@
 .category6_view{
     display:none;
 }
+

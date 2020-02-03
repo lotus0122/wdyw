@@ -14,6 +14,8 @@
 //= require activestorage
 //= require jquery3
 
+//= require turbolinks
+//= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
 //= require cocoon
@@ -883,28 +885,20 @@ $(function ($) {
 
 $(function(){
     $(document).on('click',".content2",function(){
-        $.ajax({
-            type:'GET',
-            url:'../contents',
-            dataType: 'json',
-        })
-        .done(function(data){
-            console.log(data.category2_name);
-            console.log(data.image);
+        // $.ajax({
+        //     type:'GET',
+        //     url:'../contents/',
+        //     dataType: 'json',
+        // }).done(function(data){
+        //     console.log(data.category2_name);
+        //     console.log(data.image);
 
             // カテゴリ2を隠す
-            $('.category2_view').fadeOut();
-            // もしカテゴリ1カテゴリ2に紐づくカテゴリ３のidが1だったらdetail2へ
-            if (data.name.category2_id.category3_id == 1){
-                $('.content2 a').attr('href', '/contents/detail2' + 'data.name' + 'data.category2_id');
-            } else {
-            // そうでなければカテゴリ2のidを取得してrender
-            $('.content2 a').attr('href', '/contents/' + 'data.name' + 'data.category2_id');
-            }
+            $('.category2_view_on').removeClass().addClass("category2_view_off");
+
             // カテゴリ3を表示
-            $('.category3_view').fadeIn();
-            // $('#content-image img').attr("src", '' + 'data.image');
-        })
+            $('.category3_view_off').removeClass().addClass("category3_view_on");
+        // })
     });
 });
 

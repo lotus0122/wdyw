@@ -1,1 +1,34 @@
-/* No CSS *//*# sourceMappingURL=contents.css.map */
+
+
+.new_content_link_layout{
+  text-align:right;
+}
+
+.view_center {
+  text-align: center;
+}
+
+.flexcontainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+
+/* .f-container { */
+  /* display: -webkit-box;
+  display: -ms-flexbox; */
+  /* display: flex;
+  flex-direction: row; */
+  /* -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal; */
+      /* -ms-flex-direction: row; */
+          /* flex-direction: row; */
+  /* -ms-flex-wrap: wrap; */
+      /* flex-wrap: wrap; */
+  /* -webkit-box-pack: center;
+      -ms-flex-pack: center; */
+          /* justify-content: center; */
+/* } */
+/*# sourceMappingURL=contents.css.map */
