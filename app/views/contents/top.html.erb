@@ -12,7 +12,7 @@
 <% @contents.each do |content| %>
 <%# カテゴリ2がNoContentだった場合非表示 %>
     <% if content.category2.category2_name == 'NoContent' %>
-        <%= link_to content.content_name, content_path(content) %>
+        <%= link_to content.content_name, content_path(content.category1) %>
     <% end %>
 <% end %>
 </div>

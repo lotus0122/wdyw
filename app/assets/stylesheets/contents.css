@@ -14,6 +14,11 @@
   justify-content: space-around;
 }
 
+.category_title{
+  text-align: center;
+  border: 2px solid black;
+}
+
 
 
 /* .f-container { */

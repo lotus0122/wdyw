@@ -885,20 +885,20 @@ $(function ($) {
 
 $(function(){
     $(document).on('click',".content2",function(){
-        // $.ajax({
-        //     type:'GET',
-        //     url:'../contents/',
-        //     dataType: 'json',
-        // }).done(function(data){
-        //     console.log(data.category2_name);
-        //     console.log(data.image);
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        }).done(function(data){
+            console.log(data.category2_name);
+            console.log(data.image);
 
             // カテゴリ2を隠す
-            $('.category2_view_on').removeClass().addClass("category2_view_off");
+            $('.content2').removeClass().addClass("category2_view");
 
             // カテゴリ3を表示
-            $('.category3_view_off').removeClass().addClass("category3_view_on");
-        // })
+            $('.category3_view').removeClass().addClass("category3_swich");
+        })
     });
 });
 

@@ -26,29 +26,34 @@
 
 <div  class="view_center">気分で選ぼう！</div>
 
+<div  class="category_title">
+<p>select:<%= @content.content_name %></p>
+</div>
+
 <%# カテゴリ1の情報を持って入ってきてそれに紐付いたカテゴリ2を一覧表示 %>
 <%# カテゴリ2がNoContentなら表示しない %>
 <%# カテゴリ3がNoContentの場合表示する %>
 
 <div class="flexcontainer">
-            <% @contents.each do |content| %>
-                <%# <% if @content == content.category1.category1_id %>
-                    <% if content.category2.category2_name == 'NoContent' %>
-                    <% else %>
-                        <% if content.category3.category3_name == 'NoContent' %>
+    <% @contents.each do |content| %>
+        <% if content.category1_id == @content.id %>
+            <% if content.category2.category2_name == 'NoContent' %>
+            <% else %>
+                <% if content.category3.category3_name == 'NoContent' %>
                         <div class="flexitem">
-                            <%= attachment_image_tag content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
-                        <div class="content2">
-                            <p><%= link_to content.category2.category2_name , content_path(content) %></p>
+                            <div class="content2">
+                                <%= attachment_image_tag content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
+                                <p><%= link_to content.content_name , category3_path(content.category2_id) %></p>
+                            </div>
                         </div>
-                        </div>
-                        <% else %>
-                        <% end %>
-                    <% end %>
-                <%# <% else %>
-                <%# <% end %>
+                <% else %>
+                <% end %>
             <% end %>
+        <% else %>
+        <% end %>
+    <% end %>
 </div>
+
 
 <%# カテゴリ1カテゴリ2に紐付いたカテゴリ3を一覧表示 %>
 <div class="category3_view">
