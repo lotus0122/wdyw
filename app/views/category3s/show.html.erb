@@ -17,7 +17,7 @@
 
 
 <div>
-<%= link_to "戻る", top_path %>
+<%= link_to "トップ画面へ戻る", top_path %>
 </div>
 
 <h1 class="view_center">あなたの求めるものは？</h1>
@@ -44,10 +44,11 @@
                 <% if content.category4.category4_name == 'NoContent' %>
                         <div class="flexitem">
                             <div>
+                                <p><%= content.content_name %></p>
                                 <%= attachment_image_tag content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
                                 <p>
-                                    <%= link_to content.content_name , category4_path(content.category3_id) %>
-                                    <%= link_to "決定!" , content_path(content.id) %>
+                                    <%= link_to "関連を表示する" , category4_path(content.category3_id) %>
+                                    <%= link_to "これに決定!" , content_path(content.id) %>
                                 </p>
                             </div>
                         </div>

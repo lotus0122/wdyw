@@ -19,15 +19,17 @@
 <%= link_to "ご利用方法", about_path %>
 </div>
 
-<h1 class="view_center">あなたの求めるものを探そう</h1>
-<h2 class="view_center">カテゴリ一覧</h2>
-<%# <div>検索</div> %>
 
+<h1 class="view_center">あなたの求めるものを探そう</h1>
+<br>
+<h2 class="view_center">コンテンツ一覧</h2>
+<%# <div>検索</div> %>
+<br>
 <div class="view_center">
 <% @contents.each do |content| %>
 <%# カテゴリ2がNoContentだった場合非表示 %>
     <% if content.category2.category2_name == 'NoContent' %>
-        <%= link_to content.content_name, category2_path(content.category1) %>
+        ・<%= link_to content.content_name, category2_path(content.category1) %>
     <% end %>
 <% end %>
 </div>

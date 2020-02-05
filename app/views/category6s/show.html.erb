@@ -17,7 +17,7 @@
 
 
 <div>
-<%= link_to "戻る", top_path %>
+<%= link_to "トップ画面へ戻る", top_path %>
 </div>
 
 <h1 class="view_center">あなたの求めるものは？</h1>
@@ -43,11 +43,11 @@
             <% else %>
                 <div class="flexitem">
                     <div>
+                        <p><%= content.content_name %></p>
                         <%= attachment_image_tag content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
-                        <p>
-                            <%= content.content_name %>
-                            <%= link_to "決定!" , content_path(content.id) %>
-                        </p>
+                            <p>
+                                <%= link_to "これに決定!" , content_path(content.id) %>
+                            </p>
                     </div>
                 </div>
             <% end %>
