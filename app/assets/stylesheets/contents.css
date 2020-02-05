@@ -19,7 +19,13 @@
   border: 2px solid black;
 }
 
+.top_link{
+  text-align: right;
+}
 
+.image_layout{
+  text-align: center;
+}
 
 /* .f-container { */
   /* display: -webkit-box;

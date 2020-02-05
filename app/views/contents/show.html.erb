@@ -14,103 +14,17 @@
 
 <body>
 
-
-
 <div>
-<%= link_to "戻る", top_path %>
+<%= link_to "最初に戻る", top_path %>
 </div>
 
-<h1 class="view_center">あなたの求めるものは？</h1>
+<h1>あなたが求めていたものは、
+<%= @content.content_name %>
+でした!</h1>
 
-<div class="view_center">what do you want?</div>
-
-<div  class="view_center">気分で選ぼう！</div>
-
-<div  class="category_title">
-<p>select:<%= @content.content_name %></p>
-</div>
-
-<%# カテゴリ1の情報を持って入ってきてそれに紐付いたカテゴリ2を一覧表示 %>
-<%# カテゴリ2がNoContentなら表示しない %>
-<%# カテゴリ3がNoContentの場合表示する %>
-
-<div class="flexcontainer">
-    <% @contents.each do |content| %>
-        <% if content.category1_id == @content.id %>
-            <% if content.category2.category2_name == 'NoContent' %>
-            <% else %>
-                <% if content.category3.category3_name == 'NoContent' %>
-                        <div class="flexitem">
-                            <div class="content2">
-                                <%= attachment_image_tag content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
-                                <p><%= link_to content.content_name , category3_path(content.category2_id) %></p>
-                            </div>
-                        </div>
-                <% else %>
-                <% end %>
-            <% end %>
-        <% else %>
-        <% end %>
-    <% end %>
-</div>
-
-
-<%# カテゴリ1カテゴリ2に紐付いたカテゴリ3を一覧表示 %>
-<div class="category3_view">
-    <% @contents.each do |content2| %>
-        <div class="content3">
-        <a href="'/contents/' + 'category1.category1_id' + 'category2.category2_id' + 'category3.category3_id'">
-        <%= attachment_image_tag content2, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
-        </a>
-        </div>
-        <p><%= content2.category3.category3_name %></p>
-    <% end %>
-</div>
-
-<%# カテゴリ1カテゴリ2カテゴリ3に紐付いたカテゴリ4を一覧表示 %>
-<div class="category4_view">
-    <% @contents.each do |content3| %>
-    <div class="content4">
-    <a href="'/contents/' + 'category1.category1_id' + 'category2.category2_id' + 'category3.category3_id' + 'category4.category4_id'">
-    <%= attachment_image_tag content3, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
-    </a>
-    </div>
-    <p><%= content3.category4.category4_name %></p>
-    <% end %>
-</div>
-
-<%# カテゴリ1カテゴリ2カテゴリ3カテゴリ4に紐付いたカテゴリ5を一覧表示 %>
-<div class="category5_view">
-    <% @contents.each do |content4| %>
-    <div class="content5">
-    <a href="'/contents/' + 'category1.category1_id' + 'category2.category2_id' + 'category3.category3_id' + 'category4.category4_id' + 'category5.category5_id'">
-    <%= attachment_image_tag content4, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
-    </a>
-    </div>
-    <p><%= content4.category5.category5_name %></p>
-    <% end %>
-</div>
-
-<%# カテゴリ1カテゴリ2カテゴリ3カテゴリ4に紐付いたカテゴリ5を一覧表示 %>
-<div class="category6_view">
-    <% @contents.each do |content5| %>
-    <div class="content6">
-    <a href="'/contents/' + 'category1.category1_id' + 'category2.category2_id' + 'category3.category3_id' + 'category4.category4_id' + 'category5.category5_id' + 'category6.category6_id'">
-    <%= attachment_image_tag content5, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
-    </a>
-    </div>
-    <p><%= content5.category6.category6_name %></p>
-    <% end %>
+<div class="image_layout">
+<%= attachment_image_tag @content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'300x300'  %>
 </div>
 
 </body>
 </html>
-
-<%# もし、カテゴリをclickした時に次のカテゴリが存在しなければidを持ってindexに飛ぶ %>
-<%# カテゴリ2のみ表示しておいてjqueryでclick時に次のものが表示した上で元のものを非表示にする %>
-
-<%# <p><%= content.categiry2.category2_text %>
-<%# IDに紐付いた画像を表示していく(ajax) %>
-
-<%# リンクで最後にたどり着いたidに飛びたい %>
-<%# カテゴリ6まで行かなくても次がnillだったらそこまでのidでindexページに飛ぶように %>

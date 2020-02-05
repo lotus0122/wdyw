@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :contents, only: [:index, :show, :top, :about, :detail2, :detail3, :detail4, :detail5, :detail6]
+  resources :category2s, only: [:show]
   resources :category3s, only: [:show]
   resources :category4s, only: [:show]
   resources :category5s, only: [:show]

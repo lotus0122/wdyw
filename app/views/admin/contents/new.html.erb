@@ -17,6 +17,10 @@
         <p class="flash_color"><%= flash[:notice] %></p>
     <% end %>
 
+    <div class="top_link">
+    <%= link_to "topへ戻る", top_path %>
+    </div>
+
     <%= form_for([:admin, @content]) do |f| %>
 
             <h1>コンテンツ追加フォーム</h1>
@@ -30,10 +34,12 @@
                 <p><%= f.text_field :content_name %></p>
             </div>
 
-            <div>コンテンツ説明</div>
+            <br>
+            <br>
+            <%# <div>コンテンツ説明</div>
             <div class="text2">
-                <p><%= f.text_field :content_text %></p>
-            </div>
+                <p><%= f.text_field :content_text %>
+            <%# </div> %>
 
             <div>コンテンツ画像</div>
             <p><%= f.attachment_field :image %></p>

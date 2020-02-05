@@ -26,13 +26,15 @@
 
 <div  class="view_center">気分で選ぼう！</div>
 
-<div  class="category_title">
-<p>select:<%= @content.content_name %></p>
-</div>
+<%# 手前で押したカテゴリを表示したい %>
+<%# <div  class="category_title">
+<p>select:<%= @content.content_name %>
+<%# </div> %>
 
 <%# カテゴリ1の情報を持って入ってきてそれに紐付いたカテゴリ2を一覧表示 %>
 <%# カテゴリ2がNoContentなら表示しない %>
 <%# カテゴリ3がNoContentの場合表示する %>
+<br>
 
 <div class="flexcontainer">
     <% @contents.each do |content| %>
@@ -41,9 +43,12 @@
             <% else %>
                 <% if content.category5.category5_name == 'NoContent' %>
                         <div class="flexitem">
-                            <div class="content2">
+                            <div>
                                 <%= attachment_image_tag content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
-                                <p><%= link_to content.content_name , category5_path(content.category4_id) %></p>
+                                <p>
+                                    <%= link_to content.content_name , category5_path(content.category4_id) %>
+                                    <%= link_to "決定!" , content_path(content.id) %>
+                                </p>
                             </div>
                         </div>
                 <% else %>
