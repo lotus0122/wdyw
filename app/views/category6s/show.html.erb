@@ -15,45 +15,59 @@
 <body>
 
 
+<div class="title_color">
+    <div>
+    <%= link_to "トップ画面へ戻る", top_path %>
+    </div>
 
-<div>
-<%= link_to "トップ画面へ戻る", top_path %>
+    <h1 class="view_center">あなたの求めるものは？</h1>
+
+    <%# <div class="view_center">what do you want?</div> %>
+    <br>
 </div>
 
-<h1 class="view_center">あなたの求めるものは？</h1>
+<hr>
 
-<div class="view_center">what do you want?</div>
+<%# <div class="view_center">what do you want?</div> %>
 
-<div  class="view_center">気分で選ぼう！</div>
+<div class="view_color">
+    <br>
 
-<%# 手前で押したカテゴリを表示したい %>
-<%# <div  class="category_title">
-<p>select:<%= @content.content_name %>
-<%# </div> %>
+    <div  class="view_center">気分で選ぼう！</div>
 
-<%# カテゴリ1の情報を持って入ってきてそれに紐付いたカテゴリ2を一覧表示 %>
-<%# カテゴリ2がNoContentなら表示しない %>
-<%# カテゴリ3がNoContentの場合表示する %>
-<br>
+    <%# 手前で押したカテゴリを表示したい %>
+    <%# <div  class="category_title">
+    <p>select:<%= @content.content_name %>
+    <%# </div> %>
 
-<div class="flexcontainer">
-    <% @contents.each do |content| %>
-        <% if content.category5_id == @content.id %>
-            <% if content.category6.category6_name == 'NoContent' %>
-            <% else %>
-                <div class="flexitem">
-                    <div>
-                        <p><%= content.content_name %></p>
-                        <%= attachment_image_tag content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
-                            <p>
-                                <%= link_to "これに決定!" , content_path(content.id) %>
-                            </p>
+    <%# カテゴリ1の情報を持って入ってきてそれに紐付いたカテゴリ2を一覧表示 %>
+    <%# カテゴリ2がNoContentなら表示しない %>
+    <%# カテゴリ3がNoContentの場合表示する %>
+    <br>
+
+    <div class="flexcontainer">
+        <% @contents.each do |content| %>
+            <% if content.category5_id == @content.id %>
+                <% if content.category6.category6_name == 'NoContent' %>
+                <% else %>
+                    <div class="flexitem">
+                        <div class="content_box">
+                            <p><%= content.content_name %></p>
+                            <%= attachment_image_tag content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
+                                <p>
+                                    <%= link_to "これに決定!" , content_path(content.id) %>
+                                </p>
+                        </div>
                     </div>
-                </div>
+                <% end %>
+            <% else %>
             <% end %>
-        <% else %>
         <% end %>
-    <% end %>
+    </div>
+
+    <br>
+    <br>
+
 </div>
 
 </body>

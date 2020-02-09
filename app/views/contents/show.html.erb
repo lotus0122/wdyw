@@ -14,16 +14,34 @@
 
 <body>
 
-<div>
-<%= link_to "最初に戻る", top_path %>
+<div class="title_color">
+    <div>
+    <%= link_to "最初に戻る", top_path %>
+    </div>
+
+    <h1>あなたが求めていたものは、
+    <%= @content.content_name %>
+    でした!</h1>
 </div>
 
-<h1>あなたが求めていたものは、
-<%= @content.content_name %>
-でした!</h1>
+<hr>
 
-<div class="image_layout">
-<%= attachment_image_tag @content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'300x300'  %>
+<div class="view_color">
+    <br>
+    <%# <div class="content_box"> %>
+        <div class="image_layout">
+        <%= attachment_image_tag @content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'300x300'  %>
+        </div>
+    <br>
+    <%# </div> %>
+
+
+    <%# <% if admin_signed_in? %>
+        <%# <div class="text_center"> %>
+            <%# <%= link_to "このコンテンツを削除する" , admin_content_path(@content.id) , method: :'delete' %>
+        <%# </div> %>
+    <%# <% end %>
+
 </div>
 
 </body>

@@ -1,6 +1,6 @@
 class Admin::ContentsController < ApplicationController
     protect_from_forgery :expect => [:create, :destroy]
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
 
 def index
 end
@@ -24,6 +24,10 @@ def new
     @category6 = Category6.new
 end
 
+def edit
+    @content = Content.find(params[:id])
+end
+
 def create
     content = Content.new(content_params)
     if content.save
@@ -40,7 +44,12 @@ def update
 end
     
 def destroy
+    @content = Content.find(params[:id])
+    @content.destroy
+    redirect_to top_path
 end
+
+
 
 private
 def content_params
