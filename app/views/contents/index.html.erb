@@ -1,0 +1,13 @@
+
+<div>
+<%= link_to "最初に戻る", top_path %>
+</div>
+
+<h1>あなたが求めていたものは、
+<%= @content.content_name %>
+でした!</h1>
+
+<div>
+<%= attachment_image_tag @content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'300x300'  %>
+</div>
+

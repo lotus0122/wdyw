@@ -1,21 +1,48 @@
 
-<div>
-<%= link_to "戻る", top_path %>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wdyw</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="title_color">
+    <div>
+    <%= link_to "最初に戻る", top_path %>
+    </div>
+
+    <h1>あなたが求めていたものは、
+    <%= @content.content_name %>
+    でした!</h1>
 </div>
 
-<h1>あなたの求めるものは？</h1>
+<hr>
 
-<div>what do you want?</div>
+<div class="view_color">
+    <br>
+    <%# <div class="content_box"> %>
+        <div class="image_layout">
+        <%= attachment_image_tag @content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'300x300'  %>
+        </div>
+    <br>
+    <%# </div> %>
 
-<div>気分で選ぼう！</div>
 
-<% @content.each do |content| %>
+    <%# <% if admin_signed_in? %>
+        <%# <div class="text_center"> %>
+            <%# <%= link_to "このコンテンツを削除する" , admin_content_path(@content.id) , method: :'delete' %>
+        <%# </div> %>
+    <%# <% end %>
 
-<div class="content_layout">
-<%= attachment_image_tag content, content_image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170'  %>
-<p><%= content_name %></p>
-<p><%= content_text %></p>
 </div>
-<%# IDに紐付いた画像を表示していく(ajax) %>
 
-<% end %>
+</body>
+</html>
