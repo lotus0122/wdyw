@@ -1,0 +1,74 @@
+
+
+.view_center {
+  text-align: center;
+}
+
+.flexcontainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.category_title{
+  text-align: center;
+  border: 2px solid black;
+}
+
+.top_link{
+  text-align: right;
+}
+
+.image_layout{
+  text-align: center;
+}
+
+.logout_link{
+  text-align: right;
+}
+
+.title_color{
+  background-image: url("KAZTDSCF8611_TP_V.jpg");
+}
+
+.view_color{
+  background-image: url("PAK85_zarazarashitakonkuri1313tex_TP_V.jpg");
+}
+
+.content_box{
+  background-color: white;
+}
+
+.image_size{
+  text-align: center;
+  width: 100%;
+}
+
+.admin_link{
+  text-align: right;
+}
+
+.text_center{
+  text-align: center;
+}
+
+.flash_color{
+  color: red;
+}
+
+/* .f-container { */
+  /* display: -webkit-box;
+  display: -ms-flexbox; */
+  /* display: flex;
+  flex-direction: row; */
+  /* -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal; */
+      /* -ms-flex-direction: row; */
+          /* flex-direction: row; */
+  /* -ms-flex-wrap: wrap; */
+      /* flex-wrap: wrap; */
+  /* -webkit-box-pack: center;
+      -ms-flex-pack: center; */
+          /* justify-content: center; */
+/* } */
+/*# sourceMappingURL=contents.css.map */

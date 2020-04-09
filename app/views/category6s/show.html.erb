@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wdyw</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+<div class="title_color">
+    <div>
+    <%= link_to "トップ画面へ戻る", top_path %>
+    </div>
+
+    <h1 class="view_center">あなたの求めるものは？</h1>
+
+    <%# <div class="view_center">what do you want?</div> %>
+    <br>
+</div>
+
+<hr>
+
+<%# <div class="view_center">what do you want?</div> %>
+
+<div class="view_color">
+    <br>
+
+    <div  class="view_center">気分で選ぼう！</div>
+
+    <%# 手前で押したカテゴリを表示したい %>
+    <%# <div  class="category_title">
+    <p>select:<%= @content.content_name %>
+    <%# </div> %>
+
+    <%# カテゴリ1の情報を持って入ってきてそれに紐付いたカテゴリ2を一覧表示 %>
+    <%# カテゴリ2がNoContentなら表示しない %>
+    <%# カテゴリ3がNoContentの場合表示する %>
+    <br>
+
+    <div class="flexcontainer">
+        <% @contents.each do |content| %>
+            <% if content.category5_id == @content.id %>
+                <% if content.category6.category6_name == 'NoContent' %>
+                <% else %>
+                    <div class="flexitem">
+                        <div class="content_box">
+                            <p><%= content.content_name %></p>
+                            <%= attachment_image_tag content, :image, :fill, 170, 170, fallback: "default_content.jpg" , size:'170x170' %>
+                                <p>
+                                    <%= link_to "これに決定!" , content_path(content.id) %>
+                                </p>
+                        </div>
+                    </div>
+                <% end %>
+            <% else %>
+            <% end %>
+        <% end %>
+    </div>
+
+    <br>
+    <br>
+
+</div>
+
+</body>
+</html>

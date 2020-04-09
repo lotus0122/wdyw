@@ -12,19 +12,127 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
+//= require jquery3
 
-$ (function () {
-    $('.main_button').on('click', function () {
-        $('.main_modal_wrapper').show();
-        $('.main_modal').show();
-        $('.create_main_modal').show();
+//= require turbolinks
+//= require jquery
+//= require bootstrap-sprockets
+//= require_tree .
+//= require cocoon
+//= require popper
+//= require tether
+
+//------------------------------------------------------------------------------------------
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('main_button')) {
+//         $('.main_modal').show();
+//     } else {
+//         $('.main_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.category1_button', function() {
+//         $('.category1_modal_wrapper').show();
+//         $('.category1_modal').show();
+//         if ($(this).hasClass('create_category1_button')) {
+//         $('.category1_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category2_button')) {
+//         $('.category2_modal').show();
+//     } else {
+//         $('.category2_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category3_button')) {
+//         $('.category3_modal').show();
+//     } else {
+//         $('.category3_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category4_button')) {
+//         $('.category4_modal').show();
+//     } else {
+//         $('.category4_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category5_button')) {
+//         $('.category5_modal').show();
+//     } else {
+//         $('.category5_modal').show();
+//     }
+//     });
+// });
+
+// $(function() {
+//     $(document).on('click', '.new_button', function() {
+//         $('.new_modal_wrapper').show();
+//         $('.new_modal').show();
+//         if ($(this).hasClass('category6_button')) {
+//         $('.category6_modal').show();
+//     } else {
+//         $('.category6_modal').show();
+//     }
+//     });
+// });
+
+//------------------------------------------------------------------------------------------
+
+
+$(function () {
+    $(".effect div").css("opacity", "0");
+    $(window).scroll(function () {
+        $(".effect").each(function () {
+            var imgPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > imgPos - windowHeight + windowHeight / 5) {
+                $("div", this).css("opacity", "1");
+            } else {
+                $("div", this).css("opacity", "0");
+            }
+        });
+    });
+
+    $('.main_category_button').on('click', function () {
+        $('.main_category_modal_wrapper').show();
+        $('.main_category_modal').show();
+        $('.create_main_category_modal').show();
     })
     $('.fa_wrapper').on('click', function () {
-        $('.main_modal_wrapper').hide();
-        $('.main_modal').hide();
-        $('.main_modal_content').hide();
+        $('.main_category_modal_wrapper').hide();
+        $('.main_category_modal').hide();
+        $('.main_category_modal_content').hide();
     })
 
     $('.category1_button').on('click', function () {
@@ -92,5 +200,813 @@ $ (function () {
         $('.category6_modal').hide();
         $('.category6_modal_content').hide();
     })
-    
+
 });
+
+//-----------------------------------------------main_category_ajax_top-------------------------------------------
+
+$(function () {
+    $('#main_category_submit').off('click');
+    $('#main_category_submit').on('click', function (e) {
+        e.preventDefault();
+
+        $(document).off('click', ".main_category_delete2");
+        var params = $("#new_main_category").serialize();
+
+        var main_category = $('#main_category_main_category_name').val();
+        console.log(main_category)
+        $.ajax({
+            url: "../main_categories",
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.main_category_wrapper').prepend('<span>' + data.main_category_name + '<button type="button" name="削除" value="' + data.id + '"class="main_category_delete2">削除</button></span>');
+                $('#main_category_main_category_name').val("");
+                $('<option>').attr({
+                    value: data.id,
+                }).html(data.main_category_name).appendTo('#content_main_category_id');
+
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
+    })
+});
+
+$(function () {
+    $('.main_category_delete').off('click');
+    $(".main_category_delete").on('click', function (e) {
+        e.preventDefault();
+
+        var params = $("#new_main_category").serialize();
+        var clickEle = $(this)
+
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var main_categoryID = clickEle.val();
+        $.ajax({
+            url: '../main_categories/' + main_categoryID,
+            type: 'DELETE',
+
+            data: params, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + main_categoryID);
+
+                $('select#content_main_category_id option[value=' + main_categoryID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
+
+    });
+});
+
+$(function ($) {
+    $(document).on('click', ".main_category_delete2", function (e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var main_categoryID = clickEle.val();
+        $.ajax({
+            url: '../main_categories/' + main_categoryID,
+            type: 'DELETE',
+            data: { 'id': main_categoryID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json',
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + main_categoryID);
+
+                $('select#content_main_category_id option[value=' + main_categoryID + ']').remove();
+
+            },
+            error: function (res) {
+            }
+        })
+    });
+});
+
+//---------------------------------------------main_category_ajax_bottom------------------------------------------
+
+//------------------------------------------------category1_ajax_top----------------------------------------------
+
+
+
+$(function () {
+    $('#category1_submit').off('click');
+    $('#category1_submit').on('click', function (e) {
+        e.preventDefault();
+
+        $(document).off('click', ".category1_delete2");
+        var params = $("#new_category1").serialize();
+
+        var category1 = $('#category1_category1_name').val();
+        console.log(category1)
+        $.ajax({
+            url: "../category1s",
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.category1_wrapper').prepend('<span>' + data.category1_name + '<button type="button" name="削除" value="' + data.id + '"class="category1_delete2">削除</button></span>');
+                $('#category1_category1_name').val("");
+                $('<option>').attr({
+                    value: data.id,
+                }).html(data.category1_name).appendTo('#content_category1_id');
+
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
+    })
+});
+
+$(function () {
+    $('.category1_delete').off('click');
+    $(".category1_delete").on('click', function (e) {
+        e.preventDefault();
+
+        var params = $("#new_category1").serialize();
+        var clickEle = $(this)
+
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category1ID = clickEle.val();
+        $.ajax({
+            url: '../category1s/' + category1ID,
+            type: 'DELETE',
+
+            data: params, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category1ID);
+
+                $('select#content_category1_id option[value=' + category1ID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
+
+    });
+});
+
+$(function ($) {
+    $(document).on('click', ".category1_delete2", function (e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category1ID = clickEle.val();
+        $.ajax({
+            url: '../category1s/' + category1ID,
+            type: 'DELETE',
+            data: { 'id': category1ID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json',
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category1ID);
+
+                $('select#content_category1_id option[value=' + category1ID + ']').remove();
+
+            },
+            error: function (res) {
+            }
+        })
+    });
+});
+
+
+//---------------------------------------------category1_ajax_bottom------------------------------------------
+
+//---------------------------------------------category2_ajax_top---------------------------------------------
+
+
+$(function () {
+    $('#category2_submit').off('click');
+    $('#category2_submit').on('click', function (e) {
+        e.preventDefault();
+
+        $(document).off('click', ".category2_delete2");
+        var params = $("#new_category2").serialize();
+
+        var category2 = $('#category2_category2_name').val();
+        console.log(category2)
+        $.ajax({
+            url: "../category2s",
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.category2_wrapper').prepend('<span>' + data.category2_name + '<button type="button" name="削除" value="' + data.id + '"class="category2_delete2">削除</button></span>');
+                $('#category2_category2_name').val("");
+                $('<option>').attr({
+                    value: data.id,
+                }).html(data.category2_name).appendTo('#content_category2_id');
+
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
+    })
+});
+
+$(function () {
+    $('.category2_delete').off('click');
+    $(".category2_delete").on('click', function (e) {
+        e.preventDefault();
+
+        var params = $("#new_category2").serialize();
+        var clickEle = $(this)
+
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category2ID = clickEle.val();
+        $.ajax({
+            url: '../category2s/' + category2ID,
+            type: 'DELETE',
+
+            data: params, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category2ID);
+
+                $('select#content_category2_id option[value=' + category2ID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
+
+    });
+});
+
+$(function ($) {
+    $(document).on('click', ".category2_delete2", function (e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category2ID = clickEle.val();
+        $.ajax({
+            url: '../category2s/' + category2ID,
+            type: 'DELETE',
+            data: { 'id': category2ID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json',
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category2ID);
+
+                $('select#content_category2_id option[value=' + category2ID + ']').remove();
+
+            },
+            error: function (res) {
+            }
+        })
+    });
+});
+
+//---------------------------------------------category2_ajax_bottom------------------------------------------
+
+//---------------------------------------------category3_ajax_top---------------------------------------------
+
+
+
+$(function () {
+    $('#category3_submit').off('click');
+    $('#category3_submit').on('click', function (e) {
+        e.preventDefault();
+
+        $(document).off('click', ".category3_delete2");
+        var params = $("#new_category3").serialize();
+
+        var category3 = $('#category3_category3_name').val();
+        console.log(category3)
+        $.ajax({
+            url: "../category3s",
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.category3_wrapper').prepend('<span>' + data.category3_name + '<button type="button" name="削除" value="' + data.id + '"class="category3_delete2">削除</button></span>');
+                $('#category3_category3_name').val("");
+                $('<option>').attr({
+                    value: data.id,
+                }).html(data.category3_name).appendTo('#content_category3_id');
+
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
+    })
+});
+
+$(function () {
+    $('.category3_delete').off('click');
+    $(".category3_delete").on('click', function (e) {
+        e.preventDefault();
+
+        var params = $("#new_category3").serialize();
+        var clickEle = $(this)
+
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category3ID = clickEle.val();
+        $.ajax({
+            url: '../category3s/' + category3ID,
+            type: 'DELETE',
+
+            data: params, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category3ID);
+
+                $('select#content_category3_id option[value=' + category3ID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
+
+    });
+});
+
+$(function ($) {
+    $(document).on('click', ".category3_delete2", function (e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category3ID = clickEle.val();
+        $.ajax({
+            url: '../category3s/' + category3ID,
+            type: 'DELETE',
+            data: { 'id': category3ID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json',
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category3ID);
+
+                $('select#content_category3_id option[value=' + category3ID + ']').remove();
+
+            },
+            error: function (res) {
+            }
+        })
+    });
+});
+
+//---------------------------------------------category3_ajax_bottom------------------------------------------
+
+//---------------------------------------------category4_ajax_top---------------------------------------------
+
+
+
+$(function () {
+    $('#category4_submit').off('click');
+    $('#category4_submit').on('click', function (e) {
+        e.preventDefault();
+
+        $(document).off('click', ".category4_delete2");
+        var params = $("#new_category4").serialize();
+
+        var category4 = $('#category4_category4_name').val();
+        console.log(category4)
+        $.ajax({
+            url: "../category4s",
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.category4_wrapper').prepend('<span>' + data.category4_name + '<button type="button" name="削除" value="' + data.id + '"class="category4_delete2">削除</button></span>');
+                $('#category4_category4_name').val("");
+                $('<option>').attr({
+                    value: data.id,
+                }).html(data.category4_name).appendTo('#content_category4_id');
+
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
+    })
+});
+
+$(function () {
+    $('.category4_delete').off('click');
+    $(".category4_delete").on('click', function (e) {
+        e.preventDefault();
+
+        var params = $("#new_category4").serialize();
+        var clickEle = $(this)
+
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category4ID = clickEle.val();
+        $.ajax({
+            url: '../category4s/' + category4ID,
+            type: 'DELETE',
+
+            data: params, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category4ID);
+
+                $('select#content_category4_id option[value=' + category4ID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
+
+    });
+});
+
+$(function ($) {
+    $(document).on('click', ".category4_delete2", function (e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category4ID = clickEle.val();
+        $.ajax({
+            url: '../category4s/' + category4ID,
+            type: 'DELETE',
+            data: { 'id': category4ID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json',
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category4ID);
+
+                $('select#content_category4_id option[value=' + category4ID + ']').remove();
+
+            },
+            error: function (res) {
+            }
+        })
+    });
+});
+
+//---------------------------------------------category4_ajax_bottom------------------------------------------
+
+//---------------------------------------------category5_ajax_top---------------------------------------------
+
+
+
+$(function () {
+    $('#category5_submit').off('click');
+    $('#category5_submit').on('click', function (e) {
+        e.preventDefault();
+
+        $(document).off('click', ".category5_delete2");
+        var params = $("#new_category5").serialize();
+
+        var category5 = $('#category5_category5_name').val();
+        console.log(category5)
+        $.ajax({
+            url: "../category5s",
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.category5_wrapper').prepend('<span>' + data.category5_name + '<button type="button" name="削除" value="' + data.id + '"class="category5_delete2">削除</button></span>');
+                $('#category5_category5_name').val("");
+                $('<option>').attr({
+                    value: data.id,
+                }).html(data.category5_name).appendTo('#content_category5_id');
+
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
+    })
+});
+
+$(function () {
+    $('.category5_delete').off('click');
+    $(".category5_delete").on('click', function (e) {
+        e.preventDefault();
+
+        var params = $("#new_category5").serialize();
+        var clickEle = $(this)
+
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category5ID = clickEle.val();
+        $.ajax({
+            url: '../category5s/' + category5ID,
+            type: 'DELETE',
+
+            data: params, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category5ID);
+
+                $('select#content_category5_id option[value=' + category5ID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
+
+    });
+});
+
+$(function ($) {
+    $(document).on('click', ".category5_delete2", function (e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category5ID = clickEle.val();
+        $.ajax({
+            url: '../category5s/' + category5ID,
+            type: 'DELETE',
+            data: { 'id': category5ID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json',
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category5ID);
+
+                $('select#content_category5_id option[value=' + category5ID + ']').remove();
+
+            },
+            error: function (res) {
+            }
+        })
+    });
+});
+
+//---------------------------------------------category5_ajax_bottom------------------------------------------
+
+//---------------------------------------------category6_ajax_top---------------------------------------------
+
+
+
+$(function () {
+    $('#category6_submit').off('click');
+    $('#category6_submit').on('click', function (e) {
+        e.preventDefault();
+
+        $(document).off('click', ".category6_delete2");
+        var params = $("#new_category6").serialize();
+
+        var category6 = $('#category6_category6_name').val();
+        console.log(category6)
+        $.ajax({
+            url: "../category6s",
+            type: 'POST',
+            data: params,
+            dataType: 'json',
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.category6_wrapper').prepend('<span>' + data.category6_name + '<button type="button" name="削除" value="' + data.id + '"class="category6_delete2">削除</button></span>');
+                $('#category6_category6_name').val("");
+                $('<option>').attr({
+                    value: data.id,
+                }).html(data.category6_name).appendTo('#content_category6_id');
+
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
+    })
+});
+
+$(function () {
+    $('.category6_delete').off('click');
+    $(".category6_delete").on('click', function (e) {
+        e.preventDefault();
+
+        var params = $("#new_category6").serialize();
+        var clickEle = $(this)
+
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category6ID = clickEle.val();
+        $.ajax({
+            url: '../category6s/' + category6ID,
+            type: 'DELETE',
+
+            data: params, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category6ID);
+
+                $('select#content_category6_id option[value=' + category6ID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
+
+    });
+});
+
+$(function ($) {
+    $(document).on('click', ".category6_delete2", function (e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var category6ID = clickEle.val();
+        $.ajax({
+            url: '../category6s/' + category6ID,
+            type: 'DELETE',
+            data: { 'id': category6ID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json',
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + category6ID);
+
+                $('select#content_category6_id option[value=' + category6ID + ']').remove();
+
+            },
+            error: function (res) {
+            }
+        })
+    });
+});
+
+//---------------------------------------------category6_ajax_bottom------------------------------------------
+
+//---------------------------------------------show_ajax_top--------------------------------------------------
+
+
+$(function(){
+    $(document).on('click',".content2",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        }).done(function(data){
+            console.log(data.category2_name);
+            console.log(data.image);
+
+            // カテゴリ2を隠す
+            $('.content2').removeClass().addClass("category2_view");
+
+            // カテゴリ3を表示
+            $('.category3_view').removeClass().addClass("category3_swich");
+        })
+    });
+});
+
+$(function(){
+    $(document).on('click',".content3",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        })
+        .done(function(data){
+            console.log(data.category3_name);
+            console.log(data.image);
+
+            // カテゴリ3を隠す
+            $('.category3_view').fadeOut();
+            // これまでのカテゴリに紐づくカテゴリ4のidが1だったらdetail2へ
+            if (data.name.category2_id.category3_id.category4_id == 1){
+                $('.content3 a').attr('href', '/contents/detail2' + 'data.name' + 'data.category2_id' + 'data.category3_id');
+            } else {
+            // カテゴリ3のidを取得してrender
+            $('.content3 a').attr('href', '/contents/' + 'data.name' + 'data.category2_id' + 'data.category3_id');
+            }
+            // カテゴリ4を表示
+            $('.category4_view').fadeIn();
+            // $('#content-image img').attr("src", '' + 'data.image');
+        })
+    });
+});
+
+$(function(){
+    $(document).on('click',".content4",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        })
+        .done(function(data){
+            console.log(data.category4_name);
+            console.log(data.image);
+
+            // カテゴリ4を隠す
+            $('.category4_view').fadeOut();
+            // これまでのカテゴリに紐づくカテゴリ5のidが1だったらdetail2へ
+            if (data.name.category2_id.category3_id.category4_id.category5_id == 1){
+                $('.content4 a').attr('href', '/contents/detail2' + 'data.name' + 'data.category2_id' + 'data.category3_id' + 'data.category4_id');
+            } else {
+            // カテゴリ4のidを取得してrender
+            $('.content4 a').attr('href', '/contents/' + 'data.name' + 'data.category2_id' + 'data.category3_id' + 'data.category4_id');
+            }
+            // カテゴリ5を表示
+            $('.category5_view').fadeIn();
+            // $('#content-image img').attr("src", '' + 'data.image');
+        })
+    });
+});
+
+$(function(){
+    $(document).on('click',".content5",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        })
+        .done(function(data){
+            console.log(data.category5_name);
+            console.log(data.image);
+
+            // カテゴリ5を隠す
+            $('.category5_view').fadeOut();
+            // これまでのカテゴリに紐づくカテゴリ6のidが1だったらdetail2へ
+            if (data.name.category2_id.category3_id.category4_id.category5_id.category6_id == 1){
+                $('.content4 a').attr('href', '/contents/detail2' + 'data.name' + 'data.category2_id' + 'data.category3_id' + 'data.category4_id' + 'data.category5_id');
+            } else {
+            // カテゴリ5のidを取得してrender
+            $('.content5 a').attr('href', '/contents/' + 'data.name' + 'data.category2_id' + 'data.category3_id' + 'data.category4_id' + 'data.category5_id');
+            }
+            // カテゴリ6を表示
+            $('.category6_view').fadeIn();
+            // $('#content-image img').attr("src", '' + 'data.image');
+        })
+    });
+});
+
+$(function(){
+    $(document).on('click',".content6",function(){
+        $.ajax({
+            type:'GET',
+            url:'../contents',
+            dataType: 'json',
+        })
+        .done(function(data){
+            console.log(data.name6);
+            console.log(data.image);
+
+            // カテゴリ6を隠す
+            $('.category6_view').fadeOut();
+            // 最後のカテゴリなので画像clickでdetail2へ飛ばす
+            $('.content6 a').attr('href', '/contents/detail2' + 'data.name1' + 'data.name2' + 'data.name3' + 'data.name4' + 'data.name5' + 'data.name6');
+            // indexへのリンク？
+            // $('.category3_view').fadeIn();
+            // $('#content-image img').attr("src", '' + 'data.image');
+        })
+    });
+});
+
+// 次のidがnillの時indexへ飛びたい
+
+// カテゴリ1に紐付いたカテゴリ２(1-1~)の画像をクリックすると(1-2-1~)が表示できるようにしたい
+
+// 最初の画像表示を非表示にして新しく起動していく？

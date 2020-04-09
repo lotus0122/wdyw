@@ -11,6 +11,7 @@ def index
 end
 
 def show
+    @content = Content.find(params[:id])
     @contents = Content.all
 end
 

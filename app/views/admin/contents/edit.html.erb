@@ -1,5 +1,5 @@
 
-<h1>コンテンツ編集フォーム</h1>
+<h1>コンテンツを編集</h1>
 <hr>
 <br>
 <br>
@@ -10,13 +10,13 @@
 <div>コンテンツ名</div>
 <%= f.text_field :content_name %>
 
-<div>コンテンツ説明</div>
+<%# <div>コンテンツ説明</div>
 <%= f.text_field :content_text %>
 
 <div>コンテンツ画像</div>
-<%= f.attachment_field :content_image %>
+<%= f.attachment_field :image %>
 
-<div>メインカテゴリ</div>
+<%# <div>メインカテゴリ</div>
 <% f.collection_select :main_category_id, MainCategory.all, :id, :main_category_name %>
 
 <div>サブカテゴリ1</div>

@@ -1,20 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
 
-<div>
-<%= link_to "about", about_path %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wdyw</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+<div class="title_color">
+
+    <%# <% if flash[:notice] %>
+        <%# <p class="flash_color"><%= flash[:notice] %>
+    <%# <% end %>
+
+    <br>
+    <div>
+    <%= link_to "ご利用方法", about_path %>
+    </div>
+
+    <br>
+    <h1 class="view_center">あなたの求めるものを探そう</h1>
+    <br>
+
+    <% if admin_signed_in? %>
+    <div class="logout_link">
+    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+    </div>
+    <% end %>
+
 </div>
 
-<div>
-<%= link_to "新規コンテンツを追加", new_admin_content_path %>
+<hr>
+
+<div class="view_color">
+    <br>
+    <h2 class="view_center">コンテンツ一覧</h2>
+    <%# <div>検索</div> %>
+    <br>
+    <div class="view_center">
+    <% @contents.each do |content| %>
+    <%# カテゴリ2がNoContentだった場合非表示 %>
+        <% if content.category2.category2_name == 'NoContent' %>
+            ・<%= link_to content.content_name, category2_path(content.category1) %>
+        <% end %>
+    <% end %>
+    </div>
+    <%# <%= link_to content.category1.category1_name, content_path(content.category1.category1_id)  %>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <% if admin_signed_in? %>
+        <div>
+            <%= link_to "新規コンテンツを追加する", new_admin_content_path %>
+        </div>
+    <% end %>
+
+<div class="admin_link">
+    <%= link_to "管理者入り口", new_admin_session_path %>
 </div>
 
-<div>あなたの求めるもの</div>
+    <br>
 
-<div>カテゴリー一覧</div>
-
-<%# <div>検索</div> %>
-
-<% @contents.each do |content| %>
-
-<%= link_to content.content_name, path(content.content_id)  %>
-
-<% end %>
+</div>
+</body>
+</html>
