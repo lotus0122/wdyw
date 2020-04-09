@@ -8,7 +8,7 @@ def create
 end
 
 def destroy
-    @main_category = MainCategory.new(params[:id])
+    @main_category = MainCategory.find(params[:id])
     @main_category.destroy
 end
 
