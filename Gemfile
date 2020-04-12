@@ -93,3 +93,8 @@ gem 'gimei'
 gem 'rails-i18n'
 
 gem 'rb-readline'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
