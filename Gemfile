@@ -44,6 +44,10 @@ group :development, :test do
   gem 'pry-doc'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
